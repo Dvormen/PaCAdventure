@@ -5,6 +5,10 @@ import java.util.Random;
 public class ActionSolver implements ActionListener{
 
     Start s;
+    Random rCat = new Random();
+    Random rJackpot1 = new Random();
+    Random rJackpot2 = new Random();
+    Random rJackpot3 = new Random();
     int iCat = 0;
     int iCrate = 0;
     public ActionSolver (Start s){
@@ -18,6 +22,12 @@ public class ActionSolver implements ActionListener{
 
         if(pAction.equals("TalkBed")){
             s.gui.textBox.setText("You try talking to the bed, surprisingly the bed doesnt respond.\n*this is utterly pointless*");
+        } else if (pAction.equals("Screen0")) {
+            s.ss.Screen0();
+            s.gui.textBox.setText("You find yourself in a casino, who built it here?.\n*Uhhhh... nice, finally some real fun!*");
+        } else if (pAction.equals("ScreenM")) {
+            s.gui.textBox.setText("Back to the boring stuff.\n*Theres an easter egg if you roll 3 same numbers ;)*");
+            s.ss.ScreenM();
         } else if (pAction.equals("LookBed")) {
             s.gui.textBox.setText("The bed seems really cosy, you now really want to lay in the bed.\n*this is utterly pointless*");
         } else if (pAction.equals("FightBed")) {
@@ -36,11 +46,11 @@ public class ActionSolver implements ActionListener{
                 s.gui.textBox.setText("Hey, dont do that, that´s not cool >:( !!!\n*the cat used domain amplification so she wasn´t hurt, BUT YOU GOT*");
                 //loss of 4 health
             }else {
-                //death of player
+                //loss of 5 health
             }
 
         }else if (pAction.equals("ExCat")) {
-            Random rCat = new Random();
+
             if(rCat.nextInt(3) ==2){
                 s.gui.textBox.setText("The cat wasns´t fond of your pets, she bit you.\n*the more you F around, the more you find out*");
                 //loss of health
@@ -56,10 +66,26 @@ public class ActionSolver implements ActionListener{
             s.gui.textBox.setText("You fought the crate, it didnt fight back, you now feel bad about yourself.\n*this is utterly pointless*");
         }else if (pAction.equals("ExCrate")) {
             if(iCrate == 0){
-                s.gui.textBox.setText("You gently kicked the living hell out of the crate, and the crate thanked you, you obtained a blaster from the crate.\n*turns out i was a masochist crate*");
+                s.gui.textBox.setText("You gently kicked the living hell out of the crate, and the crate thanked you, you obtained a blaster from the crate.\n*turns out i was a masochist crate, it also kinda hurt*");
                 iCrate++;
+                //loss of health
             }else {
                 s.gui.textBox.setText("The kicked crate smile at you.\n*but you can see it, it doesnt have a mouth*");
+            }
+        } else if (pAction.equals("TalkJackpot")) {
+            s.gui.textBox.setText("Talk? What do you want to talk about, the chances of winning?.\n*roll roll roll roll roll roll*");
+        } else if (pAction.equals("LookJackpot")) {
+            s.gui.textBox.setText("A huge machine is towering over you,to win a jackpot you need to hit 3 same numbers.\n*roll roll roll roll roll roll*");
+        } else if (pAction.equals("FightJackpot")) {
+            s.gui.textBox.setText("You cannot oppose the chances in a physical battle, you need to face the in a game of luck.\n*roll roll roll roll roll roll*");
+        } else if (pAction.equals("ExJackpot")) {
+            int a =rJackpot1.nextInt(9)+1;
+            int b =rJackpot2.nextInt(9)+1;
+            int c =rJackpot3.nextInt(9)+1;
+            if( a == b && a == c){
+                s.gui.textBox.setText("YOU WON, now enjoy 4 minutes and 11 seconds of being effectively immortal.\n*not really, but you got the easter egg also you rolled "+a+" "+b+" "+c+"*");
+            }else {
+                s.gui.textBox.setText("you rolled "+a+" "+b+" "+c+" better luck next time.\n*go on try again*");
             }
         }
     }
