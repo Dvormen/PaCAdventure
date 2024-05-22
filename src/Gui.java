@@ -30,11 +30,11 @@ public class Gui {
         //main bg
         crtBgStuff("bgHouse.jpg",0);
         //Cat
-        crtInteractibles("intrCat.png","Talk","Look","Take","Pet",375,230,150,200,0);
+        crtInteractibles("intrCat.png","Talk","Look","Fight","Pet","TalkCat","LookCat","FightCat","ExCat",375,230,150,200,0);
         //Crate
-        crtInteractibles("intrCrate.png","Look","Kick",null,null,700,330,150,129,0);
+        crtInteractibles("intrCrate.png","Talk","Look","Fight","Kick","TalkCrate","LookCrate","FightCrate","ExCrate",700,330,150,129,0);
         //Bed
-        crtInteractibles("intrBed.png","Look","eep",null,null,50,280,250,176,0);
+        crtInteractibles("intrBed.png","Talk","Look","Fight","eep","TalkBed","LookBed","FightBed","ExBed",50,280,250,176,0);
 
     }
 
@@ -50,7 +50,7 @@ public class Gui {
         bg[bgIndex].setBackground(Color.black);
         mainBase.add(bg[bgIndex]);
 
-        ImageIcon bgHome = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaC projekt\\PaC adventura\\pics\\"+bgName);
+        ImageIcon bgHome = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\"+bgName);
 
         bgPics[bgIndex] = new JLabel();
         bgPics[bgIndex].setBounds(30,30,899,451);
@@ -68,23 +68,34 @@ public class Gui {
      * @param w width coord
      * @param h height coord
      */
-    public void crtInteractibles(String intrName,String a1,String a2,String a3, String a4,int x, int y, int w, int h, int bgIndex){
+    public void crtInteractibles(String intrName,String a1,String a2,String a3, String a4,String a1Cmd,String a2Cmd,String a3Cmd,String a4Cmd,int x, int y, int w, int h, int bgIndex){
 
         JMenuItem items[] = new JMenuItem[4];
         JLabel intrPic = new JLabel();
         JPopupMenu actionMenu = new JPopupMenu();
 
         intrPic.setBounds(x,y,w,h);
-        ImageIcon intrBed = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaC projekt\\PaC adventura\\pics\\"+intrName);
-        intrPic.setIcon(intrBed);
+        ImageIcon interactible = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\"+intrName);
+        intrPic.setIcon(interactible);
 
         items[0] = new JMenuItem(a1);
+        items[0].addActionListener(s.as);
+        items[0].setActionCommand(a1Cmd);
         actionMenu.add(items[0]);
+
         items[1] = new JMenuItem(a2);
+        items[1].addActionListener(s.as);
+        items[1].setActionCommand(a2Cmd);
         actionMenu.add(items[1]);
+
         items[2] = new JMenuItem(a3);
+        items[2].addActionListener(s.as);
+        items[2].setActionCommand(a3Cmd);
         actionMenu.add(items[2]);
+
         items[3] = new JMenuItem(a4);
+        items[3].addActionListener(s.as);
+        items[3].setActionCommand(a4Cmd);
         actionMenu.add(items[3]);
 
         intrPic.addMouseListener(new MouseListener() {
@@ -94,16 +105,19 @@ public class Gui {
                 actionMenu.show(intrPic,e.getX(),e.getY());
             }
             public void mouseReleased(MouseEvent e) {
-
             }
             public void mouseEntered(MouseEvent e) {
-
             }
             public void mouseExited(MouseEvent e) {}
         });
 
         bg[bgIndex].add(intrPic);
         bg[bgIndex].add(bgPics[bgIndex]);
+
+    }
+
+    public void crtArrows(){
+
     }
 
 
@@ -118,7 +132,7 @@ public class Gui {
         mainBase.getContentPane().setBackground(Color.BLACK);
         mainBase.setLayout(null);
 
-        textBox = new JTextArea("You Should go speak to the general");
+        textBox = new JTextArea("I should go speak with the general");
         textBox.setBounds(50,550,900,100);
         textBox.setForeground(Color.WHITE);
         textBox.setBackground(Color.BLACK);
