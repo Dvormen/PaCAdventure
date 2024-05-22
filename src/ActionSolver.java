@@ -11,6 +11,7 @@ public class ActionSolver implements ActionListener{
     Random rJackpot3 = new Random();
     int iCat = 0;
     int iCrate = 0;
+    int iJackpot =0;
     public ActionSolver (Start s){
     this.s = s;
 
@@ -24,7 +25,12 @@ public class ActionSolver implements ActionListener{
             s.gui.textBox.setText("You try talking to the bed, surprisingly the bed doesnt respond.\n*this is utterly pointless*");
         } else if (pAction.equals("Screen0")) {
             s.ss.Screen0();
-            s.gui.textBox.setText("You find yourself in a casino, good ol place familiar to you.\n*Uhhhh... nice, finally some real fun!*");
+            if(iJackpot == 0){
+                iJackpot++;
+                s.gui.textBox.setText("You find yourself in a casino, good ol place familiar to you.\n*Uhhhh... nice, finally some real fun!*");
+            }else {
+                s.gui.textBox.setText("Seems like every road leads to the casino huh.\n*Did you know that 99.9% of gamblers quit before hitting big?*");
+            }
         } else if (pAction.equals("ScreenM")) {
             s.gui.textBox.setText("Back to the boring stuff.\n*Theres an easter egg if you roll 3 same numbers ;)*");
             s.ss.ScreenM();
@@ -73,7 +79,7 @@ public class ActionSolver implements ActionListener{
                 s.gui.textBox.setText("The kicked crate smile at you.\n*but you can see it, it doesnt have a mouth*");
             }
         } else if (pAction.equals("TalkJackpot")) {
-            s.gui.textBox.setText("Talk? What do you want to talk about, the chances of winning?.\n*roll roll roll roll roll roll*");
+            s.gui.textBox.setText("Talk? What do you want to talk about, the chances of winning?\n*roll roll roll roll roll roll*");
         } else if (pAction.equals("LookJackpot")) {
             s.gui.textBox.setText("A huge machine is towering over you,to win a jackpot you need to hit 3 same numbers.\n*roll roll roll roll roll roll*");
         } else if (pAction.equals("FightJackpot")) {
@@ -87,6 +93,22 @@ public class ActionSolver implements ActionListener{
             }else {
                 s.gui.textBox.setText("you rolled "+a+" "+b+" "+c+" better luck next time.\n*go on try again*");
             }
+        } else if (pAction.equals("TalkKey")) {
+            s.gui.textBox.setText("Not much to talk about with a key, huh?\n*yeah...*");
+        } else if (pAction.equals("LookKey")) {
+            s.gui.textBox.setText("Looks like a lost key, who does it belong to?\n*I wonder*");
+        } else if (pAction.equals("FightKey")) {
+            s.gui.textBox.setText("You lost.\n*shame (git gut)*");
+        } else if (pAction.equals("ExKey")) {
+            s.gui.textBox.setText("You pick up the key, it might come in handy.\n*You received key item key... item key... ke... YOU GET THE POINT!*");
+        } else if (pAction.equals("TalkDevice")) {
+            s.gui.textBox.setText("ℸ ̣ ⍑╎ᓭ ℸ ̣ ⍑╎リ⊣ ᓵᔑリリℸ ̣  ℸ ̣ ᔑꖎꖌ.\n*...*");
+        } else if (pAction.equals("LookDevice")) {
+            s.gui.textBox.setText("ᔑ ᓭℸ ̣ ∷ᔑリ⊣ᒷ device ∴╎ℸ ̣ ⍑ devastating effects.\n*...*");
+        } else if (pAction.equals("FightDevice")) {
+            s.gui.textBox.setText("リ.\n*...*");
+        } else if (pAction.equals("ExDevice")) {
+            s.gui.textBox.setText("You picked up the device and carefully put it into your inventory.\n*Be careful*");
         }
     }
 }
