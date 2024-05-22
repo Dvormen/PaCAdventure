@@ -11,31 +11,35 @@ public class Gui {
     JFrame mainBase;
     Start s;
     public JTextArea textBox;
-    public JLabel bgPics[] = new JLabel[7];
-    public JPanel bg[] = new JPanel[7];
+    public JLabel bgPics[] = new JLabel[15];
+    public JPanel bg[] = new JPanel[6];
 
 
     public Gui(Start s){
         this.s = s;
         crtMainBase();
-        gameCreator();
+        gameScreenCreator();
         mainBase.setVisible(true);
     }
 
     /**
      * This method creates interactible objects and the places them on the Panel
      */
-    public void gameCreator(){
-
-        //main bg
+    public void gameScreenCreator(){
+        //ScreenM
         crtBgStuff("bgHouse.jpg",0);
-        //Cat
+        crtArrows("ArrowUp.png","Screen0",450,10,50,50,0);
+        crtArrows("ArrowRight.png","Screen1",850,200,50,50,0);
         crtInteractibles("intrCat.png","Talk","Look","Fight","Pet","TalkCat","LookCat","FightCat","ExCat",375,230,150,200,0);
-        //Crate
         crtInteractibles("intrCrate.png","Talk","Look","Fight","Kick","TalkCrate","LookCrate","FightCrate","ExCrate",700,330,150,129,0);
-        //Bed
         crtInteractibles("intrBed.png","Talk","Look","Fight","eep","TalkBed","LookBed","FightBed","ExBed",50,280,250,176,0);
+        bg[0].add(bgPics[0]);
 
+        //Screen0
+        crtBgStuff("bgCasino.jpg",5);
+        crtInteractibles("intrJackpot.png","Talk","Look","Fight","Play","TalkJackpot","LookJackpot","FightJackpot","ExJackpot",375,175,300,306,5);
+        crtArrows("ArrowDown.png","ScreenM",450,10,50,50,5);
+        bg[5].add(bgPics[5]);
     }
 
 
@@ -112,12 +116,21 @@ public class Gui {
         });
 
         bg[bgIndex].add(intrPic);
-        bg[bgIndex].add(bgPics[bgIndex]);
 
     }
 
-    public void crtArrows(){
-
+    public void crtArrows(String arrowName,String cmd,int x,int y,int w,int h,int bgIndex){
+        JButton arrowB = new JButton();
+        ImageIcon arrowI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\"+arrowName);
+        arrowB.setBounds(x,y,w,h);
+        arrowB.setBackground(null);
+        arrowB.setIcon(arrowI);
+        arrowB.setContentAreaFilled(false);
+        arrowB.setBorderPainted(false);
+        arrowB.setFocusPainted(false);
+        arrowB.addActionListener(s.as);
+        arrowB.setActionCommand(cmd);
+        bg[bgIndex].add(arrowB);
     }
 
 
