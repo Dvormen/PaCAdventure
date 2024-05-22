@@ -37,9 +37,34 @@ public class Gui {
 
         //Screen0
         crtBgStuff("bgCasino.jpg",5);
-        crtInteractibles("intrJackpot.png","Talk","Look","Fight","Play","TalkJackpot","LookJackpot","FightJackpot","ExJackpot",375,175,300,306,5);
         crtArrows("ArrowDown.png","ScreenM",450,10,50,50,5);
+        crtInteractibles("intrJackpot.png","Talk","Look","Fight","Play","TalkJackpot","LookJackpot","FightJackpot","ExJackpot",375,175,300,306,5);
+        crtInteractibles("intrBlank.png","Talk","Look","Fight","Pick up","TalkKey","LookKey","FightKey","ExKey",850,390,50,50,5);
+        crtInteractibles("intrBlank.png","Talk","Look","Fight","Pick up","TalkDevice","LookDevice","FightDevice","ExDevice",750,390,50,50,5);
         bg[5].add(bgPics[5]);
+
+        //Sreen1
+        crtBgStuff("allyBase.jpg",1);
+        crtArrows("ArrowRight.png","Screen2",850,200,50,50,1);
+        crtArrows("ArrowLeft.png","ScreenM",50,200,50,50,1);
+
+        bg[1].add(bgPics[1]);
+
+        //Sreen2
+        crtBgStuff("allySpaceShip.png",2);
+
+        bg[2].add(bgPics[2]);
+
+        //Sreen3
+        crtBgStuff("enemySpaceShip.jpg",3);
+
+        bg[3].add(bgPics[3]);
+
+        //Sreen4
+        crtBgStuff("enemyBase.jpg",4);
+
+        bg[4].add(bgPics[4]);
+
     }
 
 
