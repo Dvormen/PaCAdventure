@@ -24,7 +24,7 @@ public class ActionSolver implements ActionListener{
             s.gui.textBox.setText("You try talking to the bed, surprisingly the bed doesnt respond.\n*this is utterly pointless*");
         } else if (pAction.equals("Screen0")) {
             s.ss.Screen0();
-            s.gui.textBox.setText("You find yourself in a casino, who built it here?.\n*Uhhhh... nice, finally some real fun!*");
+            s.gui.textBox.setText("You find yourself in a casino, good ol place familiar to you.\n*Uhhhh... nice, finally some real fun!*");
         } else if (pAction.equals("ScreenM")) {
             s.gui.textBox.setText("Back to the boring stuff.\n*Theres an easter egg if you roll 3 same numbers ;)*");
             s.ss.ScreenM();
