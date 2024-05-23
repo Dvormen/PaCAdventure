@@ -9,15 +9,20 @@ import java.awt.event.MouseListener;
 public class Gui {
 
     JFrame mainBase;
+    JPanel healthBar;
+    public JPanel bg[] = new JPanel[6];
+    JPanel inventory;
     Start s;
     public JTextArea textBox;
     public JLabel bgPics[] = new JLabel[15];
-    public JPanel bg[] = new JPanel[6];
+    JLabel hearts[] = new JLabel[7];
+    public JLabel gun,keys,armor,device,medal;
 
 
     public Gui(Start s){
         this.s = s;
         crtMainBase();
+        crtPlayerGui();
         gameScreenCreator();
         mainBase.setVisible(true);
     }
@@ -47,7 +52,7 @@ public class Gui {
         crtBgStuff("allyBase.jpg",1);
         crtArrows("ArrowRight.png","Screen2",850,200,50,50,1);
         crtArrows("ArrowLeft.png","ScreenM",50,200,50,50,1);
-
+        crtInteractibles("intrGeneral.png","Talk","Look","Fight","Mission","TalkGeneral","LookGeneral","FightGeneral","ExGeneral",350,100,234,332,1);
         bg[1].add(bgPics[1]);
 
         //Sreen2
@@ -86,6 +91,48 @@ public class Gui {
         bgPics[bgIndex].setIcon(bgHome);
 
 
+    }
+
+    public void crtPlayerGui(){
+        healthBar = new JPanel();
+        ImageIcon heart = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\healthIcon.png");
+        ImageIcon gunI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\gunIcon.png");
+        ImageIcon keysI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\keyIcon.png");
+        ImageIcon deviceI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\deviceIcon.png");
+        ImageIcon armorI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\armorIcon.png");
+        ImageIcon medalI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\medalIcon.png");
+
+        healthBar.setBounds(550,0,300,50);
+        healthBar.setLayout(new GridLayout(1,6));
+        healthBar.setBackground(Color.BLACK);
+        for (int i =0; i < 6;i++){
+            hearts[i] = new JLabel();
+            hearts[i].setIcon(heart);
+            healthBar.add(hearts[i]);
+        }
+
+        inventory = new JPanel();
+        inventory.setBounds(300,480,450,75);
+        inventory.setLayout(new GridLayout(1,5));
+        inventory.setBackground(Color.black);
+        gun = new JLabel();
+        gun.setIcon(gunI);
+        inventory.add(gun);
+        keys = new JLabel();
+        keys.setIcon(keysI);
+        inventory.add(keys);
+        armor = new JLabel();
+        armor.setIcon(armorI);
+        inventory.add(armor);
+        device = new JLabel();
+        device.setIcon(deviceI);
+        inventory.add(device);
+        medal = new JLabel();
+        medal.setIcon(medalI);
+        inventory.add(medal);
+
+        mainBase.add(healthBar);
+        mainBase.add(inventory);
     }
 
 
