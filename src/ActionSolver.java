@@ -14,6 +14,7 @@ public class ActionSolver implements ActionListener{
     int iCat = 0;
     int iCrate = 0;
     int iJackpot =0;
+    boolean jackpotWon = false;
     boolean bossIsSlain = false;
     public ActionSolver (Start s){
     this.s = s;
@@ -116,6 +117,7 @@ public class ActionSolver implements ActionListener{
                 int c = rJackpot3.nextInt(9) + 1;
                 if (a == b && a == c) {
                     s.gui.textBox.setText("YOU WON, now enjoy 4 minutes and 11 seconds of being effectively immortal.\n*not really, but you got the easter egg also you rolled " + a + " " + b + " " + c + "*");
+                    jackpotWon = true;
                 } else {
                     s.gui.textBox.setText("you rolled " + a + " " + b + " " + c + " better luck next time.\n*go on try again*");
                 }
@@ -143,6 +145,7 @@ public class ActionSolver implements ActionListener{
                 break;
             case "ExDevice":
                 s.gui.textBox.setText("You picked up the device and carefully put it into your inventory.\n*Be careful*");
+                //get device
                 break;
             case "TalkGeneral":
                 s.gui.textBox.setText("Welcome, welcome I have been waiting for you.\n*Interesting*");
@@ -176,6 +179,47 @@ public class ActionSolver implements ActionListener{
                     s.gui.textBox.setText("Congratulations I knew you could do it, you should get your medal for heroism in four to five business days\n*Great, you won the game YAY! you can still go around maybe you would wanna visit the terminal or maybe the casino.*");
                     //get medal
                 }
+                break;
+            case "BossTerminal":
+                s.gui.textBox.setText("The design for the boss was made by my sister.\n*She knows her stuff*");
+                break;
+            case "GeneralTerminal":
+                s.gui.textBox.setText("The general was inspired by the roblox man face and my hardware teacher Kuchařík.\n*And a military man*");
+                break;
+            case "HouseTerminal":
+                s.gui.textBox.setText("The first screen was supposed to be the players house but it seemed funny if he would be living in a literal field of grass\n*...*");
+                break;
+            case "JackpotTerminal":
+                if(jackpotWon){
+                    s.gui.textBox.setText("The song that plays when you hit the jackpot is called Pure love train or Admiring you, its exactly 4 minutes and 11 second\n*Its a Jujustu Kaisen reference*");
+                }else{
+                    s.gui.textBox.setText("Redacted\n*Thats why you should go and roll!*");
+                }
+                break;
+            case "TalkEnemy":
+                s.gui.textBox.setText("He speak in a language unknown to you, but he seems cool\n*Actually quite nice fella, no need for violence right?*");
+                break;
+            case "LookEnemy":
+                s.gui.textBox.setText("He looks like a jello on an iron walking machine\n*Looks appetizing*");
+                break;
+            case "FightEnemy":
+                s.gui.textBox.setText("Ouch you got me, before you fight the queen you should check her out, you need a special device to beat her.\n*You dont understand a word he just said, but you understood the meaning*");
+                //get armor
+                break;
+            case "ExEnemy":
+                s.gui.textBox.setText("No petting!");
+                break;
+            case "TalkBoss":
+                s.gui.textBox.setText("Notting to talk about worm, prepare yourself for the battle!");
+                break;
+            case "LookBoss":
+                s.gui.textBox.setText("Huh, What is that number on her machine?");
+                break;
+            case "FightBoss":
+                s.gui.textBox.setText("No this cannot beeeeeee....");
+                break;
+            case "ExBoss":
+                s.gui.textBox.setText("huh?");
                 break;
         }
     }
