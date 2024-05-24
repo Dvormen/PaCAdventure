@@ -84,7 +84,7 @@ public class Gui {
         bg[bgIndex].setBackground(Color.black);
         mainBase.add(bg[bgIndex]);
 
-        ImageIcon bgHome = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\"+bgName);
+        ImageIcon bgHome = new ImageIcon("pics\\"+bgName);
 
         bgPics[bgIndex] = new JLabel();
         bgPics[bgIndex].setBounds(30,30,899,451);
@@ -95,12 +95,12 @@ public class Gui {
 
     public void crtPlayerGui(){
         healthBar = new JPanel();
-        ImageIcon heart = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\healthIcon.png");
-        ImageIcon gunI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\gunIcon.png");
-        ImageIcon keysI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\keyIcon.png");
-        ImageIcon deviceI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\deviceIcon.png");
-        ImageIcon armorI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\armorIcon.png");
-        ImageIcon medalI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\medalIcon.png");
+        ImageIcon heart = new ImageIcon("pics\\healthIcon.png");
+        ImageIcon gunI = new ImageIcon("pics\\gunIcon.png");
+        ImageIcon keysI = new ImageIcon("pics\\keyIcon.png");
+        ImageIcon deviceI = new ImageIcon("pics\\deviceIcon.png");
+        ImageIcon armorI = new ImageIcon("pics\\armorIcon.png");
+        ImageIcon medalI = new ImageIcon("pics\\medalIcon.png");
 
         healthBar.setBounds(550,0,300,50);
         healthBar.setLayout(new GridLayout(1,6));
@@ -151,7 +151,7 @@ public class Gui {
         JPopupMenu actionMenu = new JPopupMenu();
 
         intrPic.setBounds(x,y,w,h);
-        ImageIcon interactible = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\"+intrName);
+        ImageIcon interactible = new ImageIcon("pics\\"+intrName);
         intrPic.setIcon(interactible);
 
         items[0] = new JMenuItem(a1);
@@ -193,7 +193,7 @@ public class Gui {
 
     public void crtArrows(String arrowName,String cmd,int x,int y,int w,int h,int bgIndex){
         JButton arrowB = new JButton();
-        ImageIcon arrowI = new ImageIcon("D:\\Škola 2\\Informační technologie\\PaCAdventure\\PaCAdventure\\pics\\"+arrowName);
+        ImageIcon arrowI = new ImageIcon("pics\\"+arrowName);
         arrowB.setBounds(x,y,w,h);
         arrowB.setBackground(null);
         arrowB.setIcon(arrowI);
