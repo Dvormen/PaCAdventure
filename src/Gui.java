@@ -216,6 +216,8 @@ public class Gui {
         mainBase.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainBase.getContentPane().setBackground(Color.BLACK);
         mainBase.setLayout(null);
+        mainBase.setResizable(false);
+        mainBase.setLocationRelativeTo(null);
 
         textBox = new JTextArea("I should go speak with the general");
         textBox.setBounds(50,550,900,100);
