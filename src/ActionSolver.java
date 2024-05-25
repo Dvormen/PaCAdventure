@@ -44,6 +44,19 @@ public class ActionSolver implements ActionListener{
                 s.gui.textBox.setText("Military base of humans.\n*More of an airport honestly...*");
                 s.ss.Screen1();
                 break;
+            case "Screen2":
+                //if player has keys it lets him in, if not somethig else will display
+                s.gui.textBox.setText("A Spaceship of your kind.\n*ooooh... That look like a terminal!*");
+                s.ss.Screen2();
+                break;
+            case "Screen3":
+                s.gui.textBox.setText("The Spaceship of the enemy.\n*Keep your guard up*");
+                s.ss.Screen3();
+                break;
+            case "Screen4":
+                s.gui.textBox.setText("The base of the enemy.\n*This is where the Le Evil Alien guy resides*");
+                s.ss.Screen4();
+                break;
             case "TalkBed":
                 s.gui.textBox.setText("You try talking to the bed, surprisingly the bed doesnt respond.\n*this is utterly pointless*");
                 break;
@@ -51,7 +64,7 @@ public class ActionSolver implements ActionListener{
                 s.gui.textBox.setText("The bed seems really cosy, you now really want to lay in the bed.\n*this is utterly pointless*");
                 break;
             case "FightBed":
-                s.gui.textBox.setText("You take you fighting stance and leap with great power to attack the bed, you immediately fall asleep after touching the bed.\n*you fell of the bed, it hurt*");
+                s.gui.textBox.setText("You take you fighting stance and leap with great power to attack the bed, you immediately after touching the bed fell asleep.\n*you fell of the bed, it hurt*");
                 //loss of 1 hp
                 break;
             case "ExBed":
@@ -70,7 +83,7 @@ public class ActionSolver implements ActionListener{
                     s.gui.textBox.setText("Hey, dont do that, that´s not cool >:( !!!\n*the cat used domain amplification so she wasn´t hurt, BUT YOU GOT*");
                     //loss of 4 hp
                 } else {
-                    //loss of all hp
+                    //Game Over
                 }
 
                 break;
@@ -99,7 +112,7 @@ public class ActionSolver implements ActionListener{
                     //get gun
                     //loss of 1 hp
                 } else {
-                    s.gui.textBox.setText("The kicked crate smile at you.\n*but you can see it, it doesnt have a mouth*");
+                    s.gui.textBox.setText("The kicked crate smiles at you.\n*but you can see it, it doesnt have a mouth*");
                 }
                 break;
             case "TalkJackpot":
@@ -197,7 +210,7 @@ public class ActionSolver implements ActionListener{
                 }
                 break;
             case "TalkEnemy":
-                s.gui.textBox.setText("He speak in a language unknown to you, but he seems cool\n*Actually quite nice fella, no need for violence right?*");
+                s.gui.textBox.setText("He says that you need a special device to protect yourself\n*You dont understand him but you feel thankful towards him, no need for violence right?*");
                 break;
             case "LookEnemy":
                 s.gui.textBox.setText("He looks like a jello on an iron walking machine\n*Looks appetizing*");
@@ -219,7 +232,7 @@ public class ActionSolver implements ActionListener{
                 s.gui.textBox.setText("No this cannot beeeeeee....");
                 break;
             case "ExBoss":
-                s.gui.textBox.setText("huh?");
+                s.gui.textBox.setText("Are you the strongest, because you have all this equipment or you do you have all this equipment because you are the strongest?\n *The player simply answered: Nah, Id win*");
                 break;
         }
     }
