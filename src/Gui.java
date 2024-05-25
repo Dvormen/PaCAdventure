@@ -32,42 +32,47 @@ public class Gui {
      */
     public void gameScreenCreator(){
         //ScreenM
-        crtBgStuff("bgHouse.jpg",0);
+        crtBgStuff("ScreenM","bgHouse.jpg",0);
         crtArrows("ArrowUp.png","Screen0",450,10,50,50,0);
         crtArrows("ArrowRight.png","Screen1",850,200,50,50,0);
-        crtInteractibles("intrCat.png","Talk","Look","Fight","Pet","TalkCat","LookCat","FightCat","ExCat",375,230,150,200,0);
-        crtInteractibles("intrCrate.png","Talk","Look","Fight","Kick","TalkCrate","LookCrate","FightCrate","ExCrate",700,330,150,129,0);
-        crtInteractibles("intrBed.png","Talk","Look","Fight","eep","TalkBed","LookBed","FightBed","ExBed",50,280,250,176,0);
+        crtInteractibles("ScreenM","intrCat.png","Talk","Look","Fight","Pet","TalkCat","LookCat","FightCat","ExCat",375,230,150,171,0);
+        crtInteractibles("ScreenM","intrCrate.png","Talk","Look","Fight","Kick","TalkCrate","LookCrate","FightCrate","ExCrate",700,330,150,129,0);
+        crtInteractibles("ScreenM","intrBed.png","Talk","Look","Fight","eep","TalkBed","LookBed","FightBed","ExBed",50,280,250,176,0);
         bg[0].add(bgPics[0]);
 
         //Screen0
-        crtBgStuff("bgCasino.jpg",5);
+        crtBgStuff("Screen0","bgCasino.jpg",5);
         crtArrows("ArrowDown.png","ScreenM",450,10,50,50,5);
-        crtInteractibles("intrJackpot.png","Talk","Look","Fight","Play","TalkJackpot","LookJackpot","FightJackpot","ExJackpot",375,175,300,306,5);
-        crtInteractibles("intrBlank.png","Talk","Look","Fight","Pick up","TalkKey","LookKey","FightKey","ExKey",850,390,50,50,5);
-        crtInteractibles("intrBlank.png","Talk","Look","Fight","Pick up","TalkDevice","LookDevice","FightDevice","ExDevice",750,390,50,50,5);
+        crtInteractibles("Screen0","intrJackpot.png","Talk","Look","Fight","Play","TalkJackpot","LookJackpot","FightJackpot","ExJackpot",375,175,300,306,5);
+        crtInteractibles("Screen0","intrBlank.png","Talk","Look","Fight","Pick up","TalkKey","LookKey","FightKey","ExKey",850,390,50,50,5);
+        crtInteractibles("Screen0","intrBlank.png","Talk","Look","Fight","Pick up","TalkDevice","LookDevice","FightDevice","ExDevice",750,390,50,50,5);
         bg[5].add(bgPics[5]);
 
-        //Sreen1
-        crtBgStuff("allyBase.jpg",1);
+        //Screen1
+        crtBgStuff("Screen1","allyBase.jpg",1);
         crtArrows("ArrowRight.png","Screen2",850,200,50,50,1);
         crtArrows("ArrowLeft.png","ScreenM",50,200,50,50,1);
-        crtInteractibles("intrGeneral.png","Talk","Look","Fight","Mission","TalkGeneral","LookGeneral","FightGeneral","ExGeneral",350,100,234,332,1);
+        crtInteractibles("Screen1","intrGeneral.png","Talk","Look","Fight","Mission","TalkGeneral","LookGeneral","FightGeneral","ExGeneral",350,100,234,332,1);
         bg[1].add(bgPics[1]);
 
-        //Sreen2
-        crtBgStuff("allySpaceShip.png",2);
-
+        //Screen2
+        crtBgStuff("Screen2","allySpaceShip.png",2);
+        crtArrows("ArrowRight.png","Screen3",850,200,50,50,2);
+        crtArrows("ArrowLeft.png","Screen1",50,200,50,50,2);
+        crtInteractibles("Screen2","intrTerminal.png","About Le Evil","About General","About Home","About Jackpot","BossTerminal","GeneralTerminal","HouseTerminal","JackpotTerminal",350,300,300,164,2);
         bg[2].add(bgPics[2]);
 
-        //Sreen3
-        crtBgStuff("enemySpaceShip.jpg",3);
-
+        //Screen3
+        crtBgStuff("Screen3","enemySpaceShip.jpg",3);
+        crtArrows("ArrowRight.png","Screen4",850,200,50,50,3);
+        crtArrows("ArrowLeft.png","Screen2",50,200,50,50,3);
+        crtInteractibles("Screen3","intrEnemy.png","Talk","Look","Fight","Pet","TalkEnemy","LookEnemy","FightEnemy","ExEnemy",350,100,476,267,3);
         bg[3].add(bgPics[3]);
 
-        //Sreen4
-        crtBgStuff("enemyBase.jpg",4);
-
+        //Screen4
+        crtBgStuff("Screen4","enemyBase.jpg",4);
+        crtArrows("ArrowLeft.png","Screen3",50,200,50,50,4);
+        crtInteractibles("Screen4","intrBoss.png","talk","Look","Fight","The Question","TalkBoss", "LookBoss","FightBoss","ExBoss",150,30,581,429,4);
         bg[4].add(bgPics[4]);
 
     }
@@ -76,7 +81,7 @@ public class Gui {
     /**
      * This method creates the background
      */
-    public void crtBgStuff(String bgName, int bgIndex){
+    public void crtBgStuff(String place,String bgName, int bgIndex){
 
         bg[bgIndex] = new JPanel();
         bg[bgIndex].setBounds(30,30,900,450);
@@ -84,7 +89,7 @@ public class Gui {
         bg[bgIndex].setBackground(Color.black);
         mainBase.add(bg[bgIndex]);
 
-        ImageIcon bgHome = new ImageIcon("pics\\"+bgName);
+        ImageIcon bgHome = new ImageIcon("pics\\"+place+"\\"+bgName);
 
         bgPics[bgIndex] = new JLabel();
         bgPics[bgIndex].setBounds(30,30,899,451);
@@ -95,12 +100,12 @@ public class Gui {
 
     public void crtPlayerGui(){
         healthBar = new JPanel();
-        ImageIcon heart = new ImageIcon("pics\\healthIcon.png");
-        ImageIcon gunI = new ImageIcon("pics\\gunIcon.png");
-        ImageIcon keysI = new ImageIcon("pics\\keyIcon.png");
-        ImageIcon deviceI = new ImageIcon("pics\\deviceIcon.png");
-        ImageIcon armorI = new ImageIcon("pics\\armorIcon.png");
-        ImageIcon medalI = new ImageIcon("pics\\medalIcon.png");
+        ImageIcon heart = new ImageIcon("pics\\Else\\healthIcon.png");
+        ImageIcon gunI = new ImageIcon("pics\\Else\\gunIcon.png");
+        ImageIcon keysI = new ImageIcon("pics\\Else\\keyIcon.png");
+        ImageIcon deviceI = new ImageIcon("pics\\Else\\deviceIcon.png");
+        ImageIcon armorI = new ImageIcon("pics\\Else\\armorIcon.png");
+        ImageIcon medalI = new ImageIcon("pics\\Else\\medalIcon.png");
 
         healthBar.setBounds(550,0,300,50);
         healthBar.setLayout(new GridLayout(1,6));
@@ -144,14 +149,14 @@ public class Gui {
      * @param w width coord
      * @param h height coord
      */
-    public void crtInteractibles(String intrName,String a1,String a2,String a3, String a4,String a1Cmd,String a2Cmd,String a3Cmd,String a4Cmd,int x, int y, int w, int h, int bgIndex){
+    public void crtInteractibles(String place,String intrName,String a1,String a2,String a3, String a4,String a1Cmd,String a2Cmd,String a3Cmd,String a4Cmd,int x, int y, int w, int h, int bgIndex){
 
         JMenuItem items[] = new JMenuItem[4];
         JLabel intrPic = new JLabel();
         JPopupMenu actionMenu = new JPopupMenu();
 
         intrPic.setBounds(x,y,w,h);
-        ImageIcon interactible = new ImageIcon("pics\\"+intrName);
+        ImageIcon interactible = new ImageIcon("pics\\"+place+"\\"+intrName);
         intrPic.setIcon(interactible);
 
         items[0] = new JMenuItem(a1);
@@ -193,7 +198,7 @@ public class Gui {
 
     public void crtArrows(String arrowName,String cmd,int x,int y,int w,int h,int bgIndex){
         JButton arrowB = new JButton();
-        ImageIcon arrowI = new ImageIcon("pics\\"+arrowName);
+        ImageIcon arrowI = new ImageIcon("pics\\Else\\"+arrowName);
         arrowB.setBounds(x,y,w,h);
         arrowB.setBackground(null);
         arrowB.setIcon(arrowI);
