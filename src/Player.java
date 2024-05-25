@@ -2,64 +2,73 @@ public class Player {
     Start s;
     public int currHp;
     public int maxHp;
-    public int aqGun;
-    public int aqKeys;
-    public int aqArmor;
-    public int aqDevice;
-    public int aqMedal;
+    public boolean aqGun;
+    public boolean aqKeys;
+    public boolean aqArmor;
+    public boolean aqDevice;
+    public boolean aqMedal;
+    public boolean aqMeme;
     public Player(Start s){
         this.s = s;
 
     }
 
     public void setBasePlayer(){
-        currHp = 5;
+        currHp = 1;
         maxHp = 6;
-        aqGun = 0;
-        aqKeys = 0;
-        aqArmor = 0;
-        aqDevice = 0;
-        aqMedal = 0;
+        aqGun = false;
+        aqKeys = false;
+        aqArmor = false;
+        aqDevice = false;
+        aqMedal = false;
+        aqMeme = false;
         checkPlayer();
     }
 
     public void checkPlayer(){
-        if(aqGun == 0){
+        if(!aqGun){
             s.gui.gun.setVisible(false);
         }
-        if(aqGun == 1){
+        if(aqGun){
             s.gui.gun.setVisible(true);
         }
-        if(aqKeys == 0){
+        if(!aqKeys){
             s.gui.keys.setVisible(false);
         }
-        if(aqKeys == 1){
+        if(aqKeys){
             s.gui.keys.setVisible(true);
         }
-        if(aqArmor == 0){
+        if(!aqArmor){
             s.gui.armor.setVisible(false);
         }
-        if(aqArmor == 1){
+        if(aqArmor){
             s.gui.armor.setVisible(true);
         }
-        if(aqDevice == 0){
+        if(!aqDevice){
             s.gui.device.setVisible(false);
         }
-        if(aqDevice == 1){
+        if(aqDevice){
             s.gui.device.setVisible(true);
         }
-        if(aqMedal == 0){
+        if(!aqMedal){
             s.gui.medal.setVisible(false);
         }
-        if(aqMedal == 1){
+        if(aqMedal){
             s.gui.medal.setVisible(true);
         }
-        for(int i = 0;i < 6;i++){
+
+        for(int i = 0;i < 7;i++){
             s.gui.hearts[i].setVisible(false);
         }
         for (int l = currHp; l > 0; l--){
             s.gui.hearts[l].setVisible(true);
 
+        }
+        if(!aqMeme){
+            s.gui.nah.setVisible(false);
+        }
+        if(aqMeme){
+            s.gui.nah.setVisible(true);
         }
 
     }
