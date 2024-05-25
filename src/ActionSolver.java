@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -12,7 +13,6 @@ public class ActionSolver implements ActionListener{
     int mission=0;
     int f =0;
     int iCat = 0;
-    int iCrate = 0;
     int iJackpot =0;
     boolean jackpotWon = false;
     boolean bossIsSlain = false;
@@ -45,9 +45,12 @@ public class ActionSolver implements ActionListener{
                 s.ss.Screen1();
                 break;
             case "Screen2":
-                //if player has keys it lets him in, if not somethig else will display
-                s.gui.textBox.setText("A Spaceship of your kind.\n*ooooh... That look like a terminal!*");
-                s.ss.Screen2();
+                if(!s.p.aqKeys){
+                    s.gui.textBox.setText("The spacecraft is locked.\n*need to find the keys*");
+                }else {
+                    s.gui.textBox.setText("A Spaceship of your kind.\n*ooooh... That look like a terminal!*");
+                    s.ss.Screen2();
+                }
                 break;
             case "Screen3":
                 s.gui.textBox.setText("The Spaceship of the enemy.\n*Keep your guard up*");
@@ -65,11 +68,17 @@ public class ActionSolver implements ActionListener{
                 break;
             case "FightBed":
                 s.gui.textBox.setText("You take you fighting stance and leap with great power to attack the bed, you immediately after touching the bed fell asleep.\n*you fell of the bed, it hurt*");
-                //loss of 1 hp
+                s.p.currHp--;
+                s.p.checkPlayer();
                 break;
             case "ExBed":
-                s.gui.textBox.setText("The bed opens up to you and lets you in gently, you eeped (sleeped) very well.\n*the bed used reversed cursed technique on you so you restored some heath*");
-                //gain of 1 hp
+                if(s.p.maxHp > s.p.currHp){
+                    s.gui.textBox.setText("The bed opens up to you and lets you in gently, you eeped (sleeped) very well.\n*the bed used reversed cursed technique on you so you restored some heath*");
+                    s.p.currHp = s.p.currHp +1;
+                    s.p.checkPlayer();
+                } else {
+                    s.gui.textBox.setText("The bed isnt opening, you no longer need to rest.\n*your hp is full* ");
+                }
                 break;
             case "TalkCat":
                 s.gui.textBox.setText("You tried talking to the cat, it stared back with eternal malice.\n*this is utterly terrifying*");
@@ -81,19 +90,31 @@ public class ActionSolver implements ActionListener{
                 if (iCat == 0) {
                     iCat++;
                     s.gui.textBox.setText("Hey, dont do that, that´s not cool >:( !!!\n*the cat used domain amplification so she wasn´t hurt, BUT YOU GOT*");
-                    //loss of 4 hp
+                    for (int i = 0;i !=4;i++){
+                        s.p.currHp--;
+                    }
+                    s.p.checkPlayer();
                 } else {
-                    //Game Over
+                    for (int i = 0;i !=6;i++){
+                        s.p.currHp--;
+                    }
+                    s.p.checkPlayer();
                 }
-
                 break;
             case "ExCat":
                 if (rCat.nextInt(3) == 2) {
                     s.gui.textBox.setText("The cat wasns´t fond of your pets, she bit you.\n*the more you F around, the more you find out*");
-                    //loss of 1 hp
-                } else {
+                    s.p.currHp--;
+                    s.p.checkPlayer();
+                } else if(s.p.currHp+2 <= s.p.maxHp){
                     s.gui.textBox.setText("The cat seems pleased as you hear her gentle purrs.\n*you are playing with danger*");
-                    //gain of 2 hp
+                    for (int i = 0;i !=2;i++){
+                        s.p.currHp++;
+                    }
+                    s.p.checkPlayer();
+                }else if(s.p.currHp < s.p.maxHp){
+                    s.p.currHp++;
+                    s.p.checkPlayer();
                 }
                 break;
             case "TalkCrate":
@@ -106,11 +127,11 @@ public class ActionSolver implements ActionListener{
                 s.gui.textBox.setText("You fought the crate, it didnt fight back, you now feel bad about yourself.\n*this is utterly pointless*");
                 break;
             case "ExCrate":
-                if (iCrate == 0) {
+                if (!s.p.aqGun) {
                     s.gui.textBox.setText("You gently kicked the living hell out of the crate, and the crate thanked you, you obtained a blaster from the crate.\n*turns out i was a masochist crate, it also kinda hurt*");
-                    iCrate++;
-                    //get gun
-                    //loss of 1 hp
+                    s.p.currHp--;
+                    s.p.aqGun = true;
+                    s.p.checkPlayer();
                 } else {
                     s.gui.textBox.setText("The kicked crate smiles at you.\n*but you can see it, it doesnt have a mouth*");
                 }
@@ -145,7 +166,13 @@ public class ActionSolver implements ActionListener{
                 s.gui.textBox.setText("You lost.\n*shame (git gut)*");
                 break;
             case "ExKey":
-                s.gui.textBox.setText("You pick up the key, it might come in handy.\n*You received key item key... item key... ke... YOU GET THE POINT!*");
+                if(!s.p.aqKeys){
+                    s.gui.textBox.setText("You pick up the key, it might come in handy.\n*You received key item key... item key... ke... YOU GET THE POINT!*");
+                    s.p.aqKeys=true;
+                    s.p.checkPlayer();
+                }else{
+                    s.gui.textBox.setText("Nothing but an empty spot remains");
+                }
                 break;
             case "TalkDevice":
                 s.gui.textBox.setText("ℸ ̣ ⍑╎ᓭ ℸ ̣ ⍑╎リ⊣ ᓵᔑリリℸ ̣  ℸ ̣ ᔑꖎꖌ.\n*...*");
@@ -157,8 +184,13 @@ public class ActionSolver implements ActionListener{
                 s.gui.textBox.setText("リ.\n*...*");
                 break;
             case "ExDevice":
-                s.gui.textBox.setText("You picked up the device and carefully put it into your inventory.\n*Be careful*");
-                //get device
+                if(!s.p.aqDevice){
+                    s.gui.textBox.setText("You picked up the device and carefully put it into your inventory.\n*Be careful*");
+                    s.p.aqDevice = true;
+                    s.p.checkPlayer();
+                }else{
+                    s.gui.textBox.setText("Nothing but an empty spot remains");
+                }
                 break;
             case "TalkGeneral":
                 s.gui.textBox.setText("Welcome, welcome I have been waiting for you.\n*Interesting*");
@@ -168,13 +200,14 @@ public class ActionSolver implements ActionListener{
                 break;
             case "FightGeneral":
                 if(f == 0){
-                    if(s.p.aqGun == 1){
+                    if(s.p.aqGun){
                         s.gui.textBox.setText("Wow such immense strenght! I hereby promote you to a soldier, you should go on an expedition to kill Le Evil Alien, but you can do that because i lost the keys to the space ship, you need to find them");
                         mission++;
                         f++;
                     }else{
                         s.gui.textBox.setText("Pathetic, do you think someone this weak can join the army? Hahaha.\n*What a douche*");
-                        //loss of 1 hp
+                        s.p.currHp--;
+                        s.p.checkPlayer();
                     }
                 }else{
                     s.gui.textBox.setText("You are too strong for the likes of me.\n*Thats what I thought*");
@@ -184,13 +217,14 @@ public class ActionSolver implements ActionListener{
             case "ExGeneral":
                 if (mission == 0){
                     s.gui.textBox.setText("You dont work for me so I dont have any missions for you.\n*Makes sence*");
-                }else if (mission == 1 && s.p.aqKeys ==1 )  {
+                }else if (mission == 1 && s.p.aqKeys)  {
                    s.gui.textBox.setText("Great you found them, now go into the spaceship and go kill some aliens!\n*Too bad, we dont kill them, we spare them!*");
                 }else if (mission == 1) {
                     s.gui.textBox.setText("Find my lost keys to the spaceship\n*Where could they be?*");
                 } else if (bossIsSlain) {
                     s.gui.textBox.setText("Congratulations I knew you could do it, you should get your medal for heroism in four to five business days\n*Great, you won the game YAY! you can still go around maybe you would wanna visit the terminal or maybe the casino.*");
-                    //get medal
+                    s.p.aqMedal = true;
+                    s.p.checkPlayer();
                 }
                 break;
             case "BossTerminal":
@@ -216,11 +250,18 @@ public class ActionSolver implements ActionListener{
                 s.gui.textBox.setText("He looks like a jello on an iron walking machine\n*Looks appetizing*");
                 break;
             case "FightEnemy":
-                s.gui.textBox.setText("Ouch you got me, before you fight the queen you should check her out, you need a special device to beat her.\n*You dont understand a word he just said, but you understood the meaning*");
-                //get armor
+                if(s.p.aqGun){
+                    s.gui.textBox.setText("Ouch you got me, before you fight the queen you should check her out, you need a special device to beat her.\n*You dont understand a word he just said, but you understood the meaning*");
+                    s.p.aqArmor = true;
+                    s.p.checkPlayer();
+                }else{
+                    s.gui.textBox.setText("How?");
+                }
                 break;
             case "ExEnemy":
                 s.gui.textBox.setText("No petting!");
+                s.p.currHp--;
+                s.p.checkPlayer();
                 break;
             case "TalkBoss":
                 s.gui.textBox.setText("Notting to talk about worm, prepare yourself for the battle!");
@@ -229,10 +270,21 @@ public class ActionSolver implements ActionListener{
                 s.gui.textBox.setText("Huh, What is that number on her machine?");
                 break;
             case "FightBoss":
-                s.gui.textBox.setText("No this cannot beeeeeee....");
+                if(s.p.aqArmor && s.p.aqDevice && !bossIsSlain){
+                    s.gui.textBox.setText("No this cannot beeeeeee....\n*she didnt die shes just a drama queen*");
+                    mission++;
+                    bossIsSlain = true;
+                }else{
+                    for(int i = 0;i < 6;i++){
+                        s.p.currHp--;
+                        s.p.checkPlayer();
+                    }
+                }
                 break;
             case "ExBoss":
                 s.gui.textBox.setText("Are you the strongest, because you have all this equipment or you do you have all this equipment because you are the strongest?\n *The player simply answered: Nah, Id win*");
+                s.p.aqMeme = true;
+                s.p.checkPlayer();
                 break;
         }
     }
