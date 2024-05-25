@@ -10,13 +10,13 @@ public class Gui {
 
     JFrame mainBase;
     JPanel healthBar;
-    public JPanel bg[] = new JPanel[6];
+    public JPanel bg[] = new JPanel[7];
     JPanel inventory;
     Start s;
     public JTextArea textBox;
     public JLabel bgPics[] = new JLabel[15];
     JLabel hearts[] = new JLabel[7];
-    public JLabel gun,keys,armor,device,medal;
+    public JLabel gun,keys,armor,device,medal, nah;
 
 
     public Gui(Start s){
@@ -106,11 +106,12 @@ public class Gui {
         ImageIcon deviceI = new ImageIcon("pics\\Else\\deviceIcon.png");
         ImageIcon armorI = new ImageIcon("pics\\Else\\armorIcon.png");
         ImageIcon medalI = new ImageIcon("pics\\Else\\medalIcon.png");
+        ImageIcon id = new ImageIcon("pics\\Else\\win.png");
 
-        healthBar.setBounds(550,0,300,50);
-        healthBar.setLayout(new GridLayout(1,6));
+        healthBar.setBounds(550,0,350,50);
+        healthBar.setLayout(new GridLayout(1,7));
         healthBar.setBackground(Color.BLACK);
-        for (int i =0; i < 6;i++){
+        for (int i =0; i < 7;i++){
             hearts[i] = new JLabel();
             hearts[i].setIcon(heart);
             healthBar.add(hearts[i]);
@@ -118,7 +119,7 @@ public class Gui {
 
         inventory = new JPanel();
         inventory.setBounds(300,480,450,75);
-        inventory.setLayout(new GridLayout(1,5));
+        inventory.setLayout(new GridLayout(1,6));
         inventory.setBackground(Color.black);
         gun = new JLabel();
         gun.setIcon(gunI);
@@ -135,6 +136,9 @@ public class Gui {
         medal = new JLabel();
         medal.setIcon(medalI);
         inventory.add(medal);
+        nah = new JLabel();
+        nah.setIcon(id);
+        inventory.add(nah);
 
         mainBase.add(healthBar);
         mainBase.add(inventory);
@@ -225,7 +229,7 @@ public class Gui {
         mainBase.setLocationRelativeTo(null);
 
         textBox = new JTextArea("I should go speak with the general");
-        textBox.setBounds(50,550,900,100);
+        textBox.setBounds(50,550,900,125);
         textBox.setForeground(Color.WHITE);
         textBox.setBackground(Color.BLACK);
         textBox.setFont(new Font("mainFont", Font.PLAIN, 21));
