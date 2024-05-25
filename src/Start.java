@@ -4,6 +4,7 @@ public class Start {
     public Player p = new Player(this);
     Gui gui = new Gui(this);
     public Start() {
+        ss.ScreenM();
         p.setBasePlayer();
     }
     public static void startGame(){
