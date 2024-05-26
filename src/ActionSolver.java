@@ -5,7 +5,6 @@ public class ActionSolver implements ActionListener{
 
     Start s;
     boolean iJackpot = false;
-    boolean bossIsSlain = false;
     public ActionSolver (Start s){
     this.s = s;
 
@@ -16,9 +15,15 @@ public class ActionSolver implements ActionListener{
         String pAction = ae.getActionCommand();
 
         switch (pAction) {
-            case "restart":
+            case "resetGame":
                 s.ss.backToTheLobby();
                 s.ss.ScreenM();
+                s.sc0.jackpotWon = false;
+                s.sc1.mission = 0;
+                s.sc1.f = 0;
+                s.sc4.bossIsSlain = false;
+                s.scm.iCat = 0;
+                break;
             case "Screen0":
                 s.ss.Screen0();
                 if (!iJackpot) {
