@@ -7,22 +7,24 @@ import java.awt.event.MouseListener;
  * This class makes all the visuals
  */
 public class Gui {
-
+    Start s;
     JFrame mainBase;
     JPanel healthBar;
     public JPanel bg[] = new JPanel[7];
     JPanel inventory;
-    Start s;
+    JButton reset;
     public JTextArea textBox;
     public JLabel bgPics[] = new JLabel[15];
     JLabel hearts[] = new JLabel[7];
     public JLabel gun,keys,armor,device,medal, nah;
+    public JLabel gOScreen;
 
 
     public Gui(Start s){
         this.s = s;
         crtMainBase();
         crtPlayerGui();
+        crtGameOverScreen();
         gameScreenCreator();
         mainBase.setVisible(true);
     }
@@ -72,11 +74,31 @@ public class Gui {
         //Screen4
         crtBgStuff("Screen4","enemyBase.jpg",4);
         crtArrows("ArrowLeft.png","Screen3",50,200,50,50,4);
-        crtInteractibles("Screen4","intrBoss.png","talk","Look","Fight","The Question","TalkBoss", "LookBoss","FightBoss","ExBoss",150,30,581,429,4);
+        crtInteractibles("Screen4","intrBoss.png","Talk","Look","Fight","The Question","TalkBoss", "LookBoss","FightBoss","ExBoss",150,30,581,429,4);
         bg[4].add(bgPics[4]);
 
     }
 
+    public void crtGameOverScreen(){
+        gOScreen = new JLabel();
+        reset = new JButton();
+        gOScreen.setBounds(200,100,800,200);
+        gOScreen.setFont(new Font("Sans", Font.PLAIN,40));
+        gOScreen.setForeground(Color.pink);
+        gOScreen.setVisible(false);
+        mainBase.add(gOScreen);
+
+        reset.setBounds(200,300,500,80);
+        reset.setBackground(null);
+        reset.setBorder(null);
+        reset.setFocusPainted(false);
+        reset.setForeground(Color.GRAY);
+
+        reset.addActionListener(s.as);
+        reset.setActionCommand("resetGame");
+        reset.setVisible(false);
+        mainBase.add(reset);
+    }
 
     /**
      * This method creates the background
