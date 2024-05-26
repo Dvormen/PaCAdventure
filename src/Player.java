@@ -70,7 +70,6 @@ public class Player {
         if(aqMeme){
             s.gui.nah.setVisible(true);
         }
-
     }
 
 
