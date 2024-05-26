@@ -4,6 +4,19 @@ public class ScreenSwaper {
     public ScreenSwaper(Start s){
         this.s = s;
     }
+    public void gameOver(int currBg){
+        s.gui.bg[currBg].setVisible(false);
+        s.gui.gOScreen.setVisible(true);
+        s.gui.reset.setVisible(true);
+        s.gui.gOScreen.setText("You failed your journey as a hero");
+        s.gui.reset.setText("Click here to play again");
+
+    }
+    public void backToTheLobby (){
+        s.gui.gOScreen.setVisible(false);
+        s.gui.reset.setVisible(false);
+        s.p.setBasePlayer();
+    }
 
     public void ScreenM(){
         s.gui.bg[0].setVisible(true);
