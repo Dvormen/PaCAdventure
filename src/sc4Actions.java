@@ -15,10 +15,8 @@ public class sc4Actions {
             bossIsSlain = true;
         }else if (!bossIsSlain){
             s.gui.textBox.setText("Weakling you could never defeat me!");
-            for(int i = 0;i < 6;i++){
-                s.p.currHp--;
-
-            }
+            s.p.currHp = s.p.currHp -6;
+            s.ss.gameOver(4);
         }else{
             s.gui.textBox.setText("*Pst... shes sleeping*");
         }

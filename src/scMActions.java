@@ -39,21 +39,29 @@ public class scMActions {
         s.gui.textBox.setText("You look at the cat, the cat mew back at you so you didnt understand.\n*this is utterly cuteful*");
     }
     public void fightCat(){
-        if (iCat == 0) {
-            iCat++;
-            s.gui.textBox.setText("Hey, dont do that, that´s not cool >:( !!!\n*the cat used domain amplification so she wasn´t hurt, BUT YOU GOT*");
-            for (int i = 0;i !=4;i++){
-                s.p.currHp--;
-            }
-        } else {
-            for (int i = 0;i !=6;i++){
-                s.p.currHp--;
-            }
+        if (iCat > 0){
+            s.p.currHp = s.p.currHp -6;
+            s.gui.textBox.setText("I told you not to do that\n*Such a cruel monster you are!*");
+            s.ss.gameOver(0);
         }
+        if (iCat == 0 && s.p.currHp <= 4) {
+            s.gui.textBox.setText("Hey, dont do that, that´s not cool >:( !!!\n*the cat used domain amplification so she wasn´t hurt, BUT YOU GOT*");
+            s.p.currHp = s.p.currHp -4;
+            s.ss.gameOver(0);
+        } else if (iCat ==0){
+            s.gui.textBox.setText("Hey, dont do that, that´s not cool >:( !!!\n*the cat used domain amplification so she wasn´t hurt, BUT YOU GOT*");
+            s.p.currHp = s.p.currHp -4;
+        }
+        iCat++;
         s.p.checkPlayer();
     }
     public void exCat(){
-        if (rCat.nextInt(3) == 2) {
+        int cat = rCat.nextInt(3);
+        if ( cat== 2 && s.p.currHp ==1) {
+            s.gui.textBox.setText("The cat wasns´t fond of your pets, she bit you.\n*the more you F around, the more you find out*");
+            s.p.currHp--;
+            s.ss.gameOver(0);
+        } else if (cat == 2) {
             s.gui.textBox.setText("The cat wasns´t fond of your pets, she bit you.\n*the more you F around, the more you find out*");
             s.p.currHp--;
         } else if(s.p.currHp+2 <= s.p.maxHp){
@@ -76,11 +84,16 @@ public class scMActions {
         s.gui.textBox.setText("You fought the crate, it didnt fight back, you now feel bad about yourself.\n*this is utterly pointless*");
     }
     public void exCrate(){
-        if (!s.p.aqGun) {
+        if (!s.p.aqGun && s.p.currHp ==1) {
             s.gui.textBox.setText("You gently kicked the living hell out of the crate, and the crate thanked you, you obtained a blaster from the crate.\n*turns out i was a masochist crate, it also kinda hurt*");
             s.p.currHp--;
             s.p.aqGun = true;
-        } else {
+            s.ss.gameOver(0);
+        } else if(!s.p.aqGun){
+            s.gui.textBox.setText("You gently kicked the living hell out of the crate, and the crate thanked you, you obtained a blaster from the crate.\n*turns out i was a masochist crate, it also kinda hurt*");
+            s.p.currHp--;
+            s.p.aqGun = true;
+        }else{
             s.gui.textBox.setText("The kicked crate smiles at you.\n*but you can see it, it doesnt have a mouth*");
         }
         s.p.checkPlayer();

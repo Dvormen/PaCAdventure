@@ -17,7 +17,11 @@ public class sc1Actions {
                 s.gui.textBox.setText("Wow such immense strenght! I hereby promote you to a soldier, you should go on an expedition to kill Le Evil Alien, but you can do that because i lost the keys to the space ship, you need to find them");
                 mission++;
                 f++;
-            }else{
+            }else if (s.p.currHp ==1){
+                s.gui.textBox.setText("Pathetic, do you think someone this weak can join the army? Hahaha.");
+                s.p.currHp--;
+                s.ss.gameOver(1);
+            } else {
                 s.gui.textBox.setText("Pathetic, do you think someone this weak can join the army? Hahaha.");
                 s.p.currHp--;
             }

@@ -16,8 +16,14 @@ public class sc3Actions {
         }
         s.p.checkPlayer();
     }public void exEnemy(){
-        s.gui.textBox.setText("No petting!");
-        s.p.currHp--;
+        if(s.p.currHp ==1){
+            s.gui.textBox.setText("No petting!");
+            s.p.currHp--;
+            s.ss.gameOver(3);
+        }else {
+            s.gui.textBox.setText("No petting!");
+            s.p.currHp--;
+        }
         s.p.checkPlayer();
     }
 }
