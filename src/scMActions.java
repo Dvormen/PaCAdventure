@@ -36,6 +36,7 @@ public class scMActions {
         s.gui.textBox.setText("You tried talking to the cat, it stared back with eternal malice.\n*this is utterly terrifying*");
     }
     public void lookCat(){
+        s.playSound(s.cat);
         s.gui.textBox.setText("You look at the cat, the cat mew back at you so you didnt understand.\n*this is utterly cuteful*");
     }
     public void fightCat(){
@@ -52,6 +53,7 @@ public class scMActions {
             s.gui.textBox.setText("Hey, dont do that, that´s not cool >:( !!!\n*the cat used domain amplification so she wasn´t hurt, BUT YOU GOT*");
             s.p.currHp = s.p.currHp -4;
         }
+        s.playSound(s.cat);
         iCat++;
         s.p.checkPlayer();
     }
@@ -72,6 +74,7 @@ public class scMActions {
         }else if(s.p.currHp < s.p.maxHp){
             s.p.currHp++;
         }
+        s.playSound(s.cat);
         s.p.checkPlayer();
     }
     public void talkCrate(){
