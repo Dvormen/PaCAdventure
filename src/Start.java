@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
 
 public class Start {
@@ -8,7 +10,14 @@ public class Start {
     Music msc = new Music();
     Sounds snd = new Sounds();
     public scMActions scm = new scMActions(this);
-    public sc0Actions sc0 = new sc0Actions(this);
+    public sc0Actions sc0;
+    {
+        try {
+            sc0 = new sc0Actions(this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public sc1Actions sc1 = new sc1Actions(this);
     public sc2Actions sc2 = new sc2Actions(this);
     public sc3Actions sc3 = new sc3Actions(this);
@@ -29,7 +38,7 @@ public class Start {
     public String generalOoh = "audio\\Recording_9.wav";
     public String casinoMusic = "audio\\Crowd Talking [Free Sound Effects].wav";
     public String musicPlaying;
-    public Start() {
+    public Start() throws FileNotFoundException {
         musicPlaying = houseMusic;
         playMusic(musicPlaying);
         try {
@@ -39,7 +48,7 @@ public class Start {
         }
         p.setBasePlayer();
     }
-    public static void startGame(){
+    public static void startGame() throws FileNotFoundException {
         new Start();
     }
     public void playSound(String sound){
