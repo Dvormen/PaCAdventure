@@ -77,7 +77,7 @@ public class ScreenSwaper {
     }
     public void musicSwapper(String music) {
         Date currDate = new Date();
-            if(s.sc0.jackpotWon && currDate.getTime() - s.sc0.dateJ.getTime() > 10000){
+            if(s.sc0.jackpotWon && currDate.getTime() - s.sc0.dateJ.getTime() > 251000){
                 s.sc0.jackpotWon = false;
                 s.stopTheMusic();
                 s.musicPlaying = music;
