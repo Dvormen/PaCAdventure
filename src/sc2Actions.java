@@ -5,12 +5,15 @@ public class sc2Actions {
     }
     public void bossTerminal(){
         s.gui.textBox.setText("The design for the boss was made by my sister.\n*She knows her stuff*");
+        s.playSound(s.terminal);
     }
     public void generalTerminal(){
         s.gui.textBox.setText("The general was inspired by the roblox man face and my hardware teacher Kuchařík.\n*And a military man*");
+        s.playSound(s.terminal);
     }
     public void houseTerminal(){
         s.gui.textBox.setText("The first screen was supposed to be the players house but it seemed funny if he would be living in a literal field of grass\n*...*");
+        s.playSound(s.terminal);
     }
     public void jackpotTerminal(){
         if(s.sc0.jackpotWon){
@@ -18,5 +21,6 @@ public class sc2Actions {
         }else{
             s.gui.textBox.setText("Redacted\n*Thats why you should go and roll!*");
         }
+        s.playSound(s.terminal);
     }
 }
