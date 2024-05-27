@@ -48,7 +48,7 @@ public class Start {
     }
     public void playMusic(String music){
         Date currDate = new Date();
-        if(sc0.jackpotWon && currDate.getTime() - sc0.dateJ.getTime() < 10000){
+        if(sc0.jackpotWon && currDate.getTime() - sc0.dateJ.getTime() < 251000){
             msc.currFile(music);
             msc.setToPlay();
         }else{
