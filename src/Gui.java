@@ -27,6 +27,7 @@ public class Gui {
         crtGameOverScreen();
         gameScreenCreator();
         mainBase.setVisible(true);
+
     }
 
     /**
