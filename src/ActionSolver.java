@@ -17,7 +17,11 @@ public class ActionSolver implements ActionListener{
         switch (pAction) {
             case "resetGame":
                 s.ss.backToTheLobby();
-                s.ss.ScreenM();
+                try {
+                    s.ss.ScreenM();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 s.sc0.jackpotWon = false;
                 s.sc1.mission = 0;
                 s.sc1.f = 0;
@@ -35,7 +39,11 @@ public class ActionSolver implements ActionListener{
                 break;
             case "ScreenM":
                 s.gui.textBox.setText("Back to the your place.\n*Somewhat calming*");
-                s.ss.ScreenM();
+                try {
+                    s.ss.ScreenM();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "Screen1":
                 s.gui.textBox.setText("Military base of humans.\n*More of an airport honestly...*");
