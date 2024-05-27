@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Random;
 
 public class sc0Actions {
@@ -6,17 +7,21 @@ public class sc0Actions {
     Random rJackpot2 = new Random();
     Random rJackpot3 = new Random();
     boolean jackpotWon = false;
+    Date dateJ = new Date();
     public sc0Actions(Start s){
         this.s = s;
     }
     public void talkJackpot(){
         s.gui.textBox.setText("Talk? What do you want to talk about, the chances of winning?\n*roll roll roll roll roll roll*");
+        s.playSound(s.machine);
     }
     public void lookJackpot(){
         s.gui.textBox.setText("A huge machine is towering over you, to win a jackpot you need to hit 3 same numbers.\n*roll roll roll roll roll roll*");
+        s.playSound(s.machine);
     }
     public void fightJackpot(){
         s.gui.textBox.setText("You cannot oppose the chances in a physical battle, you need to face the in a game of luck.\n*roll roll roll roll roll roll*");
+        s.playSound(s.machine);
     }
     public void exJackpot(){
         int a = rJackpot1.nextInt(9) + 1;
@@ -25,9 +30,13 @@ public class sc0Actions {
         if (a == b && a == c) {
             s.gui.textBox.setText("YOU WON, now enjoy 4 minutes and 11 seconds of being effectively immortal.\n*not really, but you got the easter egg also you rolled " + a + " " + b + " " + c + "*");
             jackpotWon = true;
+            s.stopTheMusic();
+            s.playMusic(s.jackpotMusic);
+            dateJ = new Date();
         } else {
             s.gui.textBox.setText("you rolled " + a + " " + b + " " + c + " better luck next time.\n*go on try again*");
         }
+        s.playSound(s.machine);
     }
     public void talkKeys(){
         s.gui.textBox.setText("Not much to talk about with a key, huh?\n*yeah...*");
