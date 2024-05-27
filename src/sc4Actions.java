@@ -6,8 +6,10 @@ public class sc4Actions {
     }
     public void talkBoss(){
         s.gui.textBox.setText("Notting to talk about worm, prepare yourself for the battle!");
+        s.playSound(s.boss);
     }public void lookBoss(){
         s.gui.textBox.setText("Huh, What is that number on her machine?");
+        s.playSound(s.boss);
     }public void fightBoss(){
         if(s.p.aqArmor && s.p.aqDevice && !bossIsSlain){
             s.gui.textBox.setText("No this cannot beeeeeee....\n*she didnt die shes just a drama queen*");
@@ -20,10 +22,12 @@ public class sc4Actions {
         }else{
             s.gui.textBox.setText("*Pst... shes sleeping*");
         }
+        s.playSound(s.boss);
         s.p.checkPlayer();
     }public void exBoss(){
         s.gui.textBox.setText("Are you the strongest, because you have all this equipment or you do you have all this equipment because you are the strongest?\n *The player simply answered: Nah, Id win*");
         s.p.aqMeme = true;
+        s.playSound(s.boss);
         s.p.checkPlayer();
     }
 }
