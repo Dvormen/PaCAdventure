@@ -1,26 +1,37 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
 public class sc0Actions {
+    ArrayList<String> text = new ArrayList<>();
+    BufferedReader br0;
     Start s;
     Random rJackpot1 = new Random();
     Random rJackpot2 = new Random();
     Random rJackpot3 = new Random();
     boolean jackpotWon = false;
     Date dateJ = new Date();
-    public sc0Actions(Start s){
+    public sc0Actions(Start s) throws IOException {
+        br0 = new BufferedReader(new FileReader("textfiles/text0.txt"));
+        String temp;
+        while((temp = br0.readLine())!=null){
+            text.add(temp);
+    }
         this.s = s;
     }
     public void talkJackpot(){
-        s.gui.textBox.setText("Talk? What do you want to talk about, the chances of winning?\n*roll roll roll roll roll roll*");
+            s.gui.textBox.setText(text.get(0));
         s.playSound(s.machine);
     }
     public void lookJackpot(){
-        s.gui.textBox.setText("A huge machine is towering over you, to win a jackpot you need to hit 3 same numbers.\n*roll roll roll roll roll roll*");
+        s.gui.textBox.setText(text.get(1));
         s.playSound(s.machine);
     }
     public void fightJackpot(){
-        s.gui.textBox.setText("You cannot oppose the chances in a physical battle, you need to face the in a game of luck.\n*roll roll roll roll roll roll*");
+        s.gui.textBox.setText(text.get(2));
         s.playSound(s.machine);
     }
     public void exJackpot(){
@@ -28,53 +39,49 @@ public class sc0Actions {
         int b = rJackpot2.nextInt(9) + 1;
         int c = rJackpot3.nextInt(9) + 1;
         if (a == b && a == c) {
-            s.gui.textBox.setText("YOU WON, now enjoy 4 minutes and 11 seconds of being effectively immortal.\n*not really, but you got the easter egg also you rolled " + a + " " + b + " " + c + "*");
+            s.gui.textBox.setText(text.get(3));
             jackpotWon = true;
             s.stopTheMusic();
             s.playMusic(s.jackpotMusic);
             dateJ = new Date();
         } else {
-            s.gui.textBox.setText("you rolled " + a + " " + b + " " + c + " better luck next time.\n*go on try again*");
-            jackpotWon = true;
-            s.stopTheMusic();
-            s.playMusic(s.jackpotMusic);
-            dateJ = new Date();
+            s.gui.textBox.setText(text.get(4));
         }
         s.playSound(s.machine);
     }
     public void talkKeys(){
-        s.gui.textBox.setText("Not much to talk about with a key, huh?\n*yeah...*");
+        s.gui.textBox.setText(text.get(5));
     }
     public void lookKeys(){
-        s.gui.textBox.setText("Looks like a lost key, who does it belong to?\n*I wonder*");
+        s.gui.textBox.setText(text.get(6));
     }
     public void fightKeys(){
-        s.gui.textBox.setText("You lost.\n*shame (git gut)*");
+        s.gui.textBox.setText(text.get(7));
     }
     public void exKeys(){
         if(!s.p.aqKeys){
-            s.gui.textBox.setText("You pick up the key, it might come in handy.\n*You received key item key... item key... ke... YOU GET THE POINT!*");
+            s.gui.textBox.setText(text.get(8));
             s.p.aqKeys=true;
         }else{
-            s.gui.textBox.setText("Nothing but an empty spot remains");
+            s.gui.textBox.setText(text.get(9));
         }
         s.p.checkPlayer();
     }
     public void talkDevice(){
-        s.gui.textBox.setText("ℸ ̣ ⍑╎ᓭ ℸ ̣ ⍑╎リ⊣ ᓵᔑリリℸ ̣  ℸ ̣ ᔑꖎꖌ.\n*...*");
+        s.gui.textBox.setText(text.get(10));
     }
     public void lookDevice(){
-        s.gui.textBox.setText("ᔑ ᓭℸ ̣ ∷ᔑリ⊣ᒷ device ∴╎ℸ ̣ ⍑ devastating effects.\n*...*");
+        s.gui.textBox.setText(text.get(11));
     }
     public void fightDevice(){
-        s.gui.textBox.setText("リ.\n*...*");
+        s.gui.textBox.setText(text.get(12));
     }
     public void exDevice(){
         if(!s.p.aqDevice){
-            s.gui.textBox.setText("You picked up the device and carefully put it into your inventory.\n*Be careful*");
+            s.gui.textBox.setText(text.get(13));
             s.p.aqDevice = true;
         }else{
-            s.gui.textBox.setText("Nothing but an empty spot remains");
+            s.gui.textBox.setText(text.get(14));
         }
         s.p.checkPlayer();
     }
