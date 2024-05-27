@@ -31,7 +31,7 @@ public class Start {
     public String musicPlaying;
     public Start() {
         musicPlaying = houseMusic;
-        playMusic(houseMusic);
+        playMusic(musicPlaying);
         try {
             ss.ScreenM();
         } catch (InterruptedException e) {
@@ -48,13 +48,14 @@ public class Start {
     }
     public void playMusic(String music){
         Date currDate = new Date();
-        if(sc0.jackpotWon && currDate.getTime() - sc0.dateJ.getTime() > 251000){
+        if(sc0.jackpotWon && currDate.getTime() - sc0.dateJ.getTime() < 10000){
             msc.currFile(music);
             msc.setToPlay();
         }else{
             msc.currFile(music);
             msc.setToPlay();
             msc.notOver();
+            sc0.jackpotWon = false;
         }
     }
     public void stopTheMusic(){
