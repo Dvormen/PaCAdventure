@@ -35,6 +35,10 @@ public class sc0Actions {
             dateJ = new Date();
         } else {
             s.gui.textBox.setText("you rolled " + a + " " + b + " " + c + " better luck next time.\n*go on try again*");
+            jackpotWon = true;
+            s.stopTheMusic();
+            s.playMusic(s.jackpotMusic);
+            dateJ = new Date();
         }
         s.playSound(s.machine);
     }
