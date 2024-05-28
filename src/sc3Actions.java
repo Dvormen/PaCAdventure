@@ -2,7 +2,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
+/**
+ * This class takes care of what is on Screen3 - Enemy Spaceship
+ */
 public class sc3Actions {
     Start s;
     ArrayList<String> text = new ArrayList<>();
@@ -15,13 +17,25 @@ public class sc3Actions {
         }
         this.s = s;
     }
+
+    /**
+     * This method is used when player picks the option to talk with the enemy
+     */
     public void talkEnemy(){
         s.gui.textBox.setText(text.get(0));
         s.playSound(s.enemy);
-    }public void lookEnemy(){
+    }
+    /**
+     * This method is used when player picks the option to look at the enemy
+     */
+    public void lookEnemy(){
         s.gui.textBox.setText(text.get(1));
         s.playSound(s.enemy);
-    }public void fightEnemy(){
+    }
+    /**
+     * This method is used when player picks the option to fight with the enemy
+     */
+    public void fightEnemy(){
         if(s.p.aqGun){
             s.gui.textBox.setText(text.get(2));
             s.p.aqArmor = true;
@@ -30,7 +44,11 @@ public class sc3Actions {
         }
         s.playSound(s.enemy);
         s.p.checkPlayer();
-    }public void exEnemy(){
+    }
+    /**
+     * This method is used when player picks the option to pet the enemy
+     */
+    public void exEnemy(){
         if(s.p.currHp ==1){
             s.gui.textBox.setText(text.get(4));
             s.p.currHp--;
