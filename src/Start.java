@@ -1,6 +1,9 @@
 import java.io.IOException;
 import java.util.Date;
 
+/**
+ * This class starts the game and does other useful stuff for example: has the file names of all the sounds
+ */
 public class Start {
     ActionSolver as = new ActionSolver(this);
     public ScreenSwaper ss = new ScreenSwaper(this);
@@ -33,20 +36,31 @@ public class Start {
     public Start() throws IOException {
         musicPlaying = houseMusic;
         playMusic(musicPlaying);
-        try {
-            ss.ScreenM();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        ss.ScreenM();
         p.setBasePlayer();
     }
+
+    /**
+     * This method starts the game
+     * @throws IOException when things go bad
+     */
     public static void startGame() throws IOException {
         new Start();
     }
+
+    /**
+     * This method plays the sound effect
+     * @param sound name of the file
+     */
     public void playSound(String sound){
         snd.currFile(sound);
         snd.setToPlay();
     }
+
+    /**
+     * This method plays and loops the current music, unless a jackpot is won
+     * @param music
+     */
     public void playMusic(String music){
         Date currDate = new Date();
         if(sc0.jackpotWon && currDate.getTime() - sc0.dateJ.getTime() < 251000){
@@ -59,6 +73,10 @@ public class Start {
             sc0.jackpotWon = false;
         }
     }
+
+    /**
+     * This method stops the music
+     */
     public void stopTheMusic(){
         msc.stopMusic();
     }
