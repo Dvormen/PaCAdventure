@@ -1,3 +1,6 @@
+/**
+ * This class keeps track of player health and items and displays them
+ */
 public class Player {
     Start s;
     public int currHp;
@@ -13,6 +16,9 @@ public class Player {
 
     }
 
+    /**
+     * This method sets the base state of player
+     */
     public void setBasePlayer(){
         currHp = 1;
         maxHp = 6;
@@ -25,6 +31,9 @@ public class Player {
         checkPlayer();
     }
 
+    /**
+     * This method checks the health and items of players and shows/hides them
+     */
     public void checkPlayer(){
         if(!aqGun){
             s.gui.gun.setVisible(false);
