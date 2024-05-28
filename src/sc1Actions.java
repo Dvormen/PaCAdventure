@@ -3,6 +3,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This class takes care of what is on Screen1 - military base
+ */
 public class sc1Actions {
     Start s;
     int f =0;
@@ -17,14 +20,24 @@ public class sc1Actions {
         }
         this.s = s;
     }
+
+    /**
+     * This method is used when player picks the option to talk with the general
+     */
     public void talkGeneral(){
         s.gui.textBox.setText(text.get(0));
         s.playSound(s.generalHem);
     }
+    /**
+     * This method is used when player picks the option to look at the general
+     */
     public void lookGeneral(){
         s.gui.textBox.setText(text.get(1));
         s.playSound(s.generalGrr);
     }
+    /**
+     * This method is used when player picks the option to fight with the general depending on the equipment if fail or succeeds
+     */
     public void fightGeneral(){
         if(f == 0){
             if(s.p.aqGun){
@@ -48,6 +61,9 @@ public class sc1Actions {
         }
         s.p.checkPlayer();
     }
+    /**
+     * This method is used when player picks the option to get his current mission from the general, depending on what the player did, the general changes dialogue
+     */
     public void exGeneral(){
         if (mission == 0){
             s.gui.textBox.setText(text.get(5));
