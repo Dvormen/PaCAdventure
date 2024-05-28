@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This class takes the input of the player and displays it/ moves screen
+ */
 public class ActionSolver implements ActionListener{
 
     Start s;
@@ -12,7 +15,7 @@ public class ActionSolver implements ActionListener{
     ArrayList<String> text = new ArrayList<>();
     BufferedReader brAs;
     public ActionSolver (Start s) throws IOException {
-        brAs = new BufferedReader(new FileReader("textfiles/textAs.txt"));
+        brAs = new BufferedReader(new FileReader("textfiles/textA.txt"));
         String temp;
         while((temp = brAs.readLine())!=null){
             text.add(temp);
@@ -20,6 +23,10 @@ public class ActionSolver implements ActionListener{
     this.s = s;
     }
 
+    /**
+     * In this method, are all the command and actions of those commands
+     * @param ae player presses mouse
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         String pAction = ae.getActionCommand();
@@ -27,11 +34,7 @@ public class ActionSolver implements ActionListener{
         switch (pAction) {
             case "resetGame":
                 s.ss.backToTheLobby();
-                try {
-                    s.ss.ScreenM();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                s.ss.ScreenM();
                 s.sc0.jackpotWon = false;
                 s.sc1.mission = 0;
                 s.sc1.f = 0;
@@ -42,37 +45,33 @@ public class ActionSolver implements ActionListener{
                 s.ss.Screen0();
                 if (!iJackpot) {
                     iJackpot = true;
-                    s.gui.textBox.setText(text.get(0));
+                    s.gui.textBox.setText(text.get(0)+"\n"+text.get(1));
                 } else {
-                    s.gui.textBox.setText(text.get(1));
+                    s.gui.textBox.setText(text.get(2)+"\n"+text.get(3));
                 }
                 break;
             case "ScreenM":
-                s.gui.textBox.setText(text.get(2));
-                try {
-                    s.ss.ScreenM();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                s.gui.textBox.setText(text.get(4)+"\n"+text.get(5));
+                s.ss.ScreenM();
                 break;
             case "Screen1":
-                s.gui.textBox.setText(text.get(3));
+                s.gui.textBox.setText(text.get(6)+"\n"+text.get(7));
                 s.ss.Screen1();
                 break;
             case "Screen2":
                 if(!s.p.aqKeys){
-                    s.gui.textBox.setText(text.get(4));
+                    s.gui.textBox.setText(text.get(8)+"\n"+text.get(9));
                 }else {
-                    s.gui.textBox.setText(text.get(5));
+                    s.gui.textBox.setText(text.get(10)+"\n"+text.get(11));
                     s.ss.Screen2();
                 }
                 break;
             case "Screen3":
-                s.gui.textBox.setText(text.get(6));
+                s.gui.textBox.setText(text.get(12)+"\n"+text.get(13));
                 s.ss.Screen3();
                 break;
             case "Screen4":
-                s.gui.textBox.setText(text.get(7));
+                s.gui.textBox.setText(text.get(14)+"\n"+text.get(15));
                 s.ss.Screen4();
                 break;
             case "TalkBed":
