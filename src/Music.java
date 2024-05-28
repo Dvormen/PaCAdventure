@@ -2,10 +2,18 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * This class takes care of music
+ */
 public class Music {
     Clip magazine;
     FloatControl volume;
     float volumeLevel = -25;
+
+    /**
+     * This method sets the music and formats it
+     * @param fileName name of the file
+     */
     public void currFile(String fileName) {
         try {
             File musicName = new File(fileName);
@@ -23,13 +31,24 @@ public class Music {
         }
     }
 
+    /**
+     * This method starts the music
+     */
     public void setToPlay(){
         magazine.setFramePosition(0);
         magazine.start();
     }
+
+    /**
+     * This method loops the music
+     */
     public void notOver(){
         magazine.loop(Clip.LOOP_CONTINUOUSLY);
     }
+
+    /**
+     * This method stops the music
+     */
     public void stopMusic(){
         magazine.stop();
     }
