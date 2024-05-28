@@ -80,6 +80,9 @@ public class Gui {
 
     }
 
+    /**
+     * This class displays the game over screen and the start over button
+     */
     public void crtGameOverScreen(){
         gOScreen = new JLabel();
         reset = new JButton();
@@ -121,6 +124,9 @@ public class Gui {
 
     }
 
+    /**
+     * This method displays all the players health and items
+     */
     public void crtPlayerGui(){
         healthBar = new JPanel();
         ImageIcon heart = new ImageIcon("pics\\Else\\healthIcon.png");
@@ -170,7 +176,7 @@ public class Gui {
 
     /**
      * This method creates interactible objects as well as the popup menus for the interactibles
-     * @param intrName file name
+     * @param intrName name of the file
      * @param x x coord
      * @param y y coord
      * @param w width coord
@@ -207,6 +213,10 @@ public class Gui {
         actionMenu.add(items[3]);
 
         intrPic.addMouseListener(new MouseListener() {
+            /**
+             * This method displays the popups when player click on an interactible object
+             * @param e the event to be processed
+             */
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {
                 if(SwingUtilities.isRightMouseButton(e));
@@ -223,6 +233,16 @@ public class Gui {
 
     }
 
+    /**
+     * This method creates the arrows for moving from screen to screen
+     * @param arrowName name of the file
+     * @param cmd name of the command
+     * @param x x coord
+     * @param y y coord
+     * @param w width coord
+     * @param h height coord
+     * @param bgIndex index of background where the arrow is
+     */
     public void crtArrows(String arrowName,String cmd,int x,int y,int w,int h,int bgIndex){
         JButton arrowB = new JButton();
         ImageIcon arrowI = new ImageIcon("pics\\Else\\"+arrowName);
