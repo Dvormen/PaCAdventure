@@ -39,13 +39,13 @@ public class sc0Actions {
         int b = rJackpot2.nextInt(9) + 1;
         int c = rJackpot3.nextInt(9) + 1;
         if (a == b && a == c) {
-            s.gui.textBox.setText(text.get(3));
+            s.gui.textBox.setText(text.get(3)+"\nyou rolled "+a+" "+b+" "+c);
             jackpotWon = true;
             s.stopTheMusic();
             s.playMusic(s.jackpotMusic);
             dateJ = new Date();
         } else {
-            s.gui.textBox.setText(text.get(4));
+            s.gui.textBox.setText(text.get(4)+"\nyou rolled "+a+" "+b+" "+c);
         }
         s.playSound(s.machine);
     }

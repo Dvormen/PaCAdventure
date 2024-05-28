@@ -1,25 +1,37 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class sc2Actions {
     Start s;
-    public sc2Actions(Start s){
+    ArrayList<String> text = new ArrayList<>();
+    BufferedReader br2;
+    public sc2Actions(Start s) throws IOException {
+        br2 = new BufferedReader(new FileReader("textfiles/text1.txt"));
+        String temp;
+        while((temp = br2.readLine())!=null){
+            text.add(temp);
+        }
         this.s = s;
     }
     public void bossTerminal(){
-        s.gui.textBox.setText("The design for the boss was made by my sister.\n*She knows her stuff*");
+        s.gui.textBox.setText(text.get(0));
         s.playSound(s.terminal);
     }
     public void generalTerminal(){
-        s.gui.textBox.setText("The general was inspired by the roblox man face and my hardware teacher Kuchařík.\n*And a military man*");
+        s.gui.textBox.setText(text.get(1));
         s.playSound(s.terminal);
     }
     public void houseTerminal(){
-        s.gui.textBox.setText("The first screen was supposed to be the players house but it seemed funny if he would be living in a literal field of grass\n*...*");
+        s.gui.textBox.setText(text.get(2));
         s.playSound(s.terminal);
     }
     public void jackpotTerminal(){
         if(s.sc0.jackpotWon){
-            s.gui.textBox.setText("The song that plays when you hit the jackpot is called Pure love train or Admiring you, its exactly 4 minutes and 11 second\n*Its a Jujustu Kaisen reference*");
+            s.gui.textBox.setText(text.get(3));
         }else{
-            s.gui.textBox.setText("Redacted\n*Thats why you should go and roll!*");
+            s.gui.textBox.setText(text.get(4));
         }
         s.playSound(s.terminal);
     }

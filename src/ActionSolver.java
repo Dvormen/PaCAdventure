@@ -1,13 +1,23 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class ActionSolver implements ActionListener{
 
     Start s;
     boolean iJackpot = false;
-    public ActionSolver (Start s){
+    ArrayList<String> text = new ArrayList<>();
+    BufferedReader brAs;
+    public ActionSolver (Start s) throws IOException {
+        brAs = new BufferedReader(new FileReader("textfiles/textAs.txt"));
+        String temp;
+        while((temp = brAs.readLine())!=null){
+            text.add(temp);
+        }
     this.s = s;
-
     }
 
     @Override
@@ -32,13 +42,13 @@ public class ActionSolver implements ActionListener{
                 s.ss.Screen0();
                 if (!iJackpot) {
                     iJackpot = true;
-                    s.gui.textBox.setText("You find yourself in a casino, good ol place familiar to you.\n*Uhhhh... nice, finally some real fun!*");
+                    s.gui.textBox.setText(text.get(0));
                 } else {
-                    s.gui.textBox.setText("Seems like every road leads to the casino huh.\n*Did you know that 99.9% of gamblers quit before hitting big?*");
+                    s.gui.textBox.setText(text.get(1));
                 }
                 break;
             case "ScreenM":
-                s.gui.textBox.setText("Back to the your place.\n*Somewhat calming*");
+                s.gui.textBox.setText(text.get(2));
                 try {
                     s.ss.ScreenM();
                 } catch (InterruptedException e) {
@@ -46,23 +56,23 @@ public class ActionSolver implements ActionListener{
                 }
                 break;
             case "Screen1":
-                s.gui.textBox.setText("Military base of humans.\n*More of an airport honestly...*");
+                s.gui.textBox.setText(text.get(3));
                 s.ss.Screen1();
                 break;
             case "Screen2":
                 if(!s.p.aqKeys){
-                    s.gui.textBox.setText("The spacecraft is locked.\n*need to find the keys*");
+                    s.gui.textBox.setText(text.get(4));
                 }else {
-                    s.gui.textBox.setText("A Spaceship of your kind.\n*ooooh... That look like a terminal!*");
+                    s.gui.textBox.setText(text.get(5));
                     s.ss.Screen2();
                 }
                 break;
             case "Screen3":
-                s.gui.textBox.setText("The Spaceship of the enemy.\n*Keep your guard up*");
+                s.gui.textBox.setText(text.get(6));
                 s.ss.Screen3();
                 break;
             case "Screen4":
-                s.gui.textBox.setText("The base of the enemy.\n*This is where the Le Evil Alien guy resides*");
+                s.gui.textBox.setText(text.get(7));
                 s.ss.Screen4();
                 break;
             case "TalkBed":
