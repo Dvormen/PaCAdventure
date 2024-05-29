@@ -23,21 +23,21 @@ public class sc2Actions {
      * This method is used when players picks the option to talk about the boss
      */
     public void bossTerminal(){
-        s.gui.textBox.setText(text.get(0));
+        s.gui.textBox.setText(text.get(0)+"\n"+text.get(1));
         s.playSound(s.terminal);
     }
     /**
      * This method is used when players picks the option to talk about general
      */
     public void generalTerminal(){
-        s.gui.textBox.setText(text.get(1));
+        s.gui.textBox.setText(text.get(2)+"\n"+text.get(3));
         s.playSound(s.terminal);
     }
     /**
      * This method is used when players picks the option to talk about his house
      */
     public void houseTerminal(){
-        s.gui.textBox.setText(text.get(2));
+        s.gui.textBox.setText(text.get(4)+"\n"+text.get(5));
         s.playSound(s.terminal);
     }
     /**
@@ -45,9 +45,9 @@ public class sc2Actions {
      */
     public void jackpotTerminal(){
         if(s.sc0.jackpotWon){
-            s.gui.textBox.setText(text.get(3));
+            s.gui.textBox.setText(text.get(6)+"\n"+text.get(7));
         }else{
-            s.gui.textBox.setText(text.get(4));
+            s.gui.textBox.setText(text.get(8)+"\n"+text.get(9));
         }
         s.playSound(s.terminal);
     }

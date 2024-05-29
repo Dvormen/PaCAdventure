@@ -38,15 +38,15 @@ public class sc4Actions {
      */
     public void fightBoss(){
         if(s.p.aqArmor && s.p.aqDevice && !bossIsSlain){
-            s.gui.textBox.setText(text.get(2));
+            s.gui.textBox.setText(text.get(2)+"\n"+text.get(3));
             s.sc1.mission++;
             bossIsSlain = true;
         }else if (!bossIsSlain){
-            s.gui.textBox.setText(text.get(3));
+            s.gui.textBox.setText(text.get(4));
             s.p.currHp = s.p.currHp -6;
             s.ss.gameOver(4);
         }else{
-            s.gui.textBox.setText(text.get(4));
+            s.gui.textBox.setText(text.get(5));
         }
         s.playSound(s.boss);
         s.p.checkPlayer();
@@ -55,7 +55,7 @@ public class sc4Actions {
      * This method is used when player picks the option to ask the boss an important question
      */
     public void exBoss(){
-        s.gui.textBox.setText(text.get(5));
+        s.gui.textBox.setText(text.get(6)+"\n"+text.get(7));
         s.p.aqMeme = true;
         s.playSound(s.boss);
         s.p.checkPlayer();

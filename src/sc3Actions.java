@@ -22,14 +22,14 @@ public class sc3Actions {
      * This method is used when player picks the option to talk with the enemy
      */
     public void talkEnemy(){
-        s.gui.textBox.setText(text.get(0));
+        s.gui.textBox.setText(text.get(0)+"\n"+text.get(1));
         s.playSound(s.enemy);
     }
     /**
      * This method is used when player picks the option to look at the enemy
      */
     public void lookEnemy(){
-        s.gui.textBox.setText(text.get(1));
+        s.gui.textBox.setText(text.get(2)+"\n"+text.get(3));
         s.playSound(s.enemy);
     }
     /**
@@ -37,10 +37,10 @@ public class sc3Actions {
      */
     public void fightEnemy(){
         if(s.p.aqGun){
-            s.gui.textBox.setText(text.get(2));
+            s.gui.textBox.setText(text.get(4)+"\n"+text.get(5));
             s.p.aqArmor = true;
         }else{
-            s.gui.textBox.setText(text.get(3));
+            s.gui.textBox.setText(text.get(6));
         }
         s.playSound(s.enemy);
         s.p.checkPlayer();
@@ -50,11 +50,11 @@ public class sc3Actions {
      */
     public void exEnemy(){
         if(s.p.currHp ==1){
-            s.gui.textBox.setText(text.get(4));
+            s.gui.textBox.setText(text.get(7));
             s.p.currHp--;
             s.ss.gameOver(3);
         }else {
-            s.gui.textBox.setText(text.get(4));
+            s.gui.textBox.setText(text.get(7));
             s.p.currHp--;
         }
         s.playSound(s.enemy);
