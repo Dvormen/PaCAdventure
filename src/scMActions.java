@@ -97,7 +97,7 @@ public class scMActions {
      */
     public void exCat(){
         int cat = rCat.nextInt(3);
-        if ( cat== 2 && s.p.currHp ==1) {
+        if (cat== 2 && s.p.currHp ==1) {
             s.gui.textBox.setText(text.get(19)+"\n"+text.get(20));
             s.p.currHp--;
             s.ss.gameOver(0);
