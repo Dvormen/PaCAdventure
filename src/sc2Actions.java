@@ -11,7 +11,7 @@ public class sc2Actions {
     ArrayList<String> text = new ArrayList<>();
     BufferedReader br2;
     public sc2Actions(Start s) throws IOException {
-        br2 = new BufferedReader(new FileReader("textfiles/text1.txt"));
+        br2 = new BufferedReader(new FileReader("textfiles/text2.txt"));
         String temp;
         while((temp = br2.readLine())!=null){
             text.add(temp);
