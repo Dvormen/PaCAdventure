@@ -59,7 +59,7 @@ public class Start {
 
     /**
      * This method plays and loops the current music, unless a jackpot is won
-     * @param music
+     * @param music music file name
      */
     public void playMusic(String music){
         Date currDate = new Date();
